@@ -1,0 +1,9 @@
+.Search-wrapper{
+    margin: 0 auto;
+}
+
+#Search{
+    width: 600px;
+    padding: 1rem;
+    letter-spacing: 2px;
+}
