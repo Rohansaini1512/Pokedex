@@ -7,9 +7,17 @@ function PokemonList(){
     const [isLoading , setIsLoading] = useState(true);
 
     async function pokemonDownload(){
+        // this downloads list of 20 pokemons
         const response = await axios.get('https://pokeapi.co/api/v2/pokemon')
+
+        // we get the array of pokemons from results
         const pokemonResult = response.data.results;
+
+        // iterating over the array of pokemons and u8sing their url , to create an array of promises 
+        // that will download those 20 pokemons
         const pokemonPromise = await pokemonResult.map((pokemon) => axios.get(pokemon.url));
+
+        // passing that promisearray to axios.all
         const pokemonData = await axios.all(pokemonPromise);
         console.log(pokemonData);
         const res = pokemonData.map((pokeData) => {
