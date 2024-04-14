@@ -41,9 +41,6 @@ function PokemonList(){
     console.log("Hello")
     return(
         <>
-        <div>
-            Pokemon List
-        </div>
         <div className="pokemon-wrapper">
         {(isLoading) ? 'loading ... ' : pokemonList.map((p) => <Pokemon  name={p.name} image={p.image} id={p.id}/>)}
         </div>

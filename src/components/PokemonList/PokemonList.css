@@ -1,4 +1,8 @@
 .pokemon-wrapper{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    margin: 2rem auto;
+    justify-content: space-evenly;
 }
+
