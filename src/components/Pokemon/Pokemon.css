@@ -18,3 +18,8 @@
 .pokemon:hover{
     background-color: beige;
 }
+
+.pokemon-name{
+    letter-spacing: 2px;
+    padding-top: 50px;
+}
