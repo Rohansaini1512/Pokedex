@@ -9,10 +9,7 @@ function Pokedex(){
             <Search />
         </div>
          <PokemonList />
-            <div className='control'>
-                <button>prev</button>
-                <button>next</button>
-            </div>
+            
          </div>
     );
 }

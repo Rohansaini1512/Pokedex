@@ -5,4 +5,13 @@
     margin: 2rem auto;
     justify-content: space-evenly;
 }
-
+.control{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    margin-left: 1rem;
+    margin-bottom: 2px;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    /* size: 2rem; */
+}
