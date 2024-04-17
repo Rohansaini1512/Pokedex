@@ -1,0 +1,25 @@
+.pokemon-name{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+.pokemon-image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.pokemon-height{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.pokemon-weight{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
