@@ -32,7 +32,7 @@ function PokemonDetails(){
             <div className="pokemon-height">Height: {pokemon.height}</div>
             <div className="pokemon-weight">Weight: {pokemon.weight}</div>
             <div className="pokemon-types">
-                {pokemon.types && pokemon.types.map((type) => <div key={type}>{type}</div>)}
+                {pokemon.types && pokemon.types.map((type) => <div key={type}>type: {type}</div>)}
             </div>
         </div>
     );
