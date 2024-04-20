@@ -22,7 +22,7 @@ function PokemonList(){
 
     async function pokemonDownload(){
         // setIsLoading(true);
-        setPokemonListState({...pokemonListState, isLoading : true})
+        setPokemonListState((state)=>({...state, isLoading : true}))
         // this downloads list of 20 pokemons
         const response = await axios.get(pokemonListState.pokedexUrl)
 
@@ -31,7 +31,11 @@ function PokemonList(){
         console.log(response.data);
         // setPrevUrl(response.data.previous);
         console.log("Rohan");
-        setPokemonListState({...pokemonListState , prevUrl:response.data.previous , nextUrl:response.data.next})
+        setPokemonListState((state)=>({
+            ...state , 
+            prevUrl:response.data.previous , 
+            nextUrl:response.data.next
+        }))
         // setNextUrl(response.data.next)
 
         // iterating over the array of pokemons and u8sing their url , to create an array of promises 
@@ -52,7 +56,11 @@ function PokemonList(){
         })
         console.log(res);
         // setPokemonList(res);
-        setPokemonListState({...pokemonListState, pokemonList:res , isLoading:false})
+        setPokemonListState((state)=>({
+            ...state, 
+            pokemonList:res , 
+            isLoading:false
+        }))
         // setIsLoading(false);
     }
 
