@@ -1,8 +1,9 @@
 
+import useDebounce from '../../hooks/useDebounce';
 import './Search.css'
 function Search({updateSearchTerm}){
 
-    
+    const debouncedCallback = useDebounce((e) => updateSearchTerm(e.target.value))
 
     return(
         <div className="Search-wrapper">
@@ -10,7 +11,7 @@ function Search({updateSearchTerm}){
                 type="text" 
                 placeholder="Search Pokemon ..."
                 id='Search'
-                onChange={(e) => updateSearchTerm(e.target.value)}
+                onChange={debouncedCallback}
             />
             
         </div>
