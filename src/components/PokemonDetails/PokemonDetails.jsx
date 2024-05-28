@@ -2,13 +2,20 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import './PokemonDetails.css'
-function PokemonDetails(){
+function PokemonDetails({pokemonName}){
     const { id } = useParams(); // Destructuring to get the id parameter
+    // const [poke] = pokemonDownload(id , pokemonName);
     const [pokemon , setPokemon] = useState({});
 
     async function  pokemonDownload(){
-        try {
-            const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+        try{
+        let response;
+        if(pokemonName){
+            response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
+        }
+        else{
+            response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+        }
             setPokemon({
                 name: response.data.name,
                 image: response.data.sprites.other.dream_world.front_default, // Accessing the correct path for the image
@@ -22,8 +29,9 @@ function PokemonDetails(){
     }
 
     useEffect(()=>{
+        
         pokemonDownload();
-    }, [id]); // Adding id to dependency array so the effect re-runs when the id changes
+    }, []); // Adding id to dependency array so the effect re-runs when the id changes
 
     return(
         <div className="pokemon-details-wrapper">
