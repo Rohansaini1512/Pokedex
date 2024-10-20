@@ -22,15 +22,20 @@ function PokemonList(){
 
     async function pokemonDownload(){
         // setIsLoading(true);
-        setPokemonListState({...pokemonListState, isLoading : true})
+        setPokemonListState((state)=>({...state, isLoading : true}))
         // this downloads list of 20 pokemons
-        const response = await axios.get(pokedexUrl)
+        const response = await axios.get(pokemonListState.pokedexUrl)
 
         // we get the array of pokemons from results
         const pokemonResult = response.data.results;
         console.log(response.data);
         // setPrevUrl(response.data.previous);
-        setPokemonListState({...pokemonListState , prevUrl:response.data.previous , nextUrl:response.data.next})
+        console.log("Rohan");
+        setPokemonListState((state)=>({
+            ...state , 
+            prevUrl:response.data.previous , 
+            nextUrl:response.data.next
+        }))
         // setNextUrl(response.data.next)
 
         // iterating over the array of pokemons and u8sing their url , to create an array of promises 
@@ -51,7 +56,11 @@ function PokemonList(){
         })
         console.log(res);
         // setPokemonList(res);
-        setPokemonListState({...pokemonListState, pokemonList:res , isLoading:false})
+        setPokemonListState((state)=>({
+            ...state, 
+            pokemonList:res , 
+            isLoading:false
+        }))
         // setIsLoading(false);
     }
 
@@ -62,7 +71,7 @@ function PokemonList(){
     return(
         <>
         <div className="pokemon-wrapper">
-        {(isLoading) ? 'loading ... ' : pokemonList.map((p) => <Pokemon  name={p.name} image={p.image} id={p.id}/>)}
+        {(pokemonListState.isLoading) ? 'loading ... ' : pokemonListState.pokemonList.map((p) => <Pokemon  name={p.name} image={p.image} id={p.id}/>)}
         </div>
         <div className='control'>
                 <button disabled={pokemonListState.prevUrl == null} onClick={() => setPokemonListState({...pokemonListState , pokedexUrl:pokemonListState.prevUrl})}>prev</button>
